@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using ExercicioLinq.Entities;
 using System.IO;
 using System.Globalization;
+using System.Linq;
 
 namespace ExercicioLinq
 {
@@ -25,6 +26,10 @@ namespace ExercicioLinq
                     list.Add(new Product(name, price));
                 }
             }
+
+            var avg = list.Select(p => p.Price).DefaultIfEmpty(0.0).Average();
+            Console.WriteLine("Avarege price = " + avg.ToString("F2", CultureInfo.InvariantCulture));
+
         }
     }
 }
